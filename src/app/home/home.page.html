@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Lista de Información</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-content>
+    <ion-searchbar [(ngModel)]="filtro" placeholder="Buscar..."></ion-searchbar>
+    
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12" size-md="6" size-lg="4" *ngFor="let item of data">
+          <ion-card>
+            <img [src]="item.avatar" alt="Imagen del futbolista" />
+            <ion-card-header>
+              <ion-card-title>{{ item.name }}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <p><strong>Email:</strong> {{ item.email }}</p>
+              <p><strong>Dirección:</strong> {{ item.address.street }}, {{ item.address.city }}</p>
+              <p><strong>País:</strong> {{ item.address.country }}</p>
+              <p *ngIf="item.type === 'rider'"><strong>Tipo:</strong> Player</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
