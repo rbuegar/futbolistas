@@ -12,15 +12,13 @@ export class HomePage {
 
   constructor(private httpClient: HttpClient) {
     this.httpClient
-      .get<any[]>("https://github.com/rbuegar/datos/blob/master/datos.json") // URL cruda del JSON
+      .get<any[]>("https://raw.githubusercontent.com/rbuegar/datos/refs/heads/master/datos.json") // URL cruda del JSON
       .subscribe(
         (response) => {
           console.log('Datos recibidos:', response); // Mostrar los datos en la consola
           this.data = response; // Asignar los datos
-        },
-        (error) => {
-          console.error('Error al obtener el JSON:', error); // Manejar errores
         }
+        
       );
   }
 } 
